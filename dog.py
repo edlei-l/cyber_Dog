@@ -6,17 +6,17 @@ class Dog:
     def chat(self):
         self.energy=self.energy-10
         if self.mood>80:
-            print(f"[chat]mood={self.mood}"+"\n[chat]energy={self.energy}")
+            print(f"[chat]mood={self.mood}\n[chat]energy={self.energy}")
             print("I am happy now")
         elif  self.mood<50 :
            print(f"[chat]mood={self.mood}"+"\n[chat]energy={self.energy}")
            print("perfunctory....")
         else:
-            print(f"[chat]mood={self.mood}"+"\n[chat]energy={self.energy}")
+            print(f"[chat]mood={self.mood}\n[chat]energy={self.energy}")
             print(f"{self.name} was not bad,but not good either")
     def sleep(self):
         self.energy+=50
-        print("energy=%d"%self.energy)
+        print(f"{self.name} is sleeping\n[energy]={self.energy}\n[mood]={self.mood}")
     def work(self):
         self.mood-=20
         self.energy-=30
@@ -38,17 +38,20 @@ while True:
     option=int(input())
     if option==1:
         my_Dog.chat()
-        if my_Dog.energy<0:
+        if my_Dog.energy<=0:
             print(f"{my_Dog.name} is tired")
             break
     elif option==2:
         my_Dog.sleep()
-        if my_Dog.energy<0:
+        if my_Dog.energy<=0:
             print(f"{my_Dog.name} is tired")
             break
+        elif my_Dog.energy>100:
+            my_Dog.energy=100
+            print(f"The max energy value is 100!!!\n[energy]={my_Dog.energy}\n[mood]={my_Dog.mood}")
     elif option==3:
         my_Dog.work()
-        if my_Dog.energy<0:
+        if my_Dog.energy<=0:
             print(f"{my_Dog.name} is tired")
             break
     elif option==0:
